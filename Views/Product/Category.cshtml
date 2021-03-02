@@ -4,13 +4,12 @@
     @* Displays category links and routes to product/index view based on category id selected *@
 
     <div class="bg-primary m-1 p-1"><h4>Categories</h4></div>
-    <ul>
+    <div>
         @foreach (Category category in Model){
            
-              <li><a asp-action="Index" asp-route-id="@category.CategoryId">
+              <a asp-action="Index" asp-route-id="@category.CategoryId" class="list-group-item list-group-item-action">
                @category.CategoryName - @category.Description
-               </a>
-                 </li>
+                 </a>
 
         }
-    </ul>
+    </div>

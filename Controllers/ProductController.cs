@@ -10,8 +10,8 @@ namespace Northwind.Controllers
         private NorthwindContext _northwindContext;
         public ProductController(NorthwindContext db) => _northwindContext = db;
 
-        public IActionResult Category() => View(_northwindContext.Categories);
-        public IActionResult Index(int id) => View(_northwindContext.Products.Where(p => p.CategoryId == id).OrderBy(n => n.ProductName).Where(p => p.Discontinued == false));
+        public IActionResult Category() => View(_northwindContext.Categories.OrderBy(p => p.CategoryName));
+        public IActionResult Index(int id) => View(_northwindContext.Products.Where(p => p.CategoryId == id && p.Discontinued == false).OrderBy(n => n.ProductName));
 
     }
 }
