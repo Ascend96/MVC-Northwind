@@ -62,6 +62,7 @@ a.navbar-brand {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     font-family: 'Fjalla One', sans-serif;
+    
   }
   .footer {
     position: absolute;
@@ -70,3 +71,6 @@ a.navbar-brand {
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
   }
+
+
+  

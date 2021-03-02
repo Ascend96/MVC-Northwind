@@ -1,0 +1,24 @@
+@using Northwind.Models
+@model IEnumerable<Product>
+    
+    @* Displays table for product information based on category selected *@
+    
+    <div class="bg-primary m-1 p-1"><h4>Products</h4></div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (Product category in Model){
+        <tr>
+            <td>@category.ProductName</td>
+            <td>@category.UnitPrice</td>
+            <td>@category.UnitsInStock</td>
+        </tr>
+        }
+        </tbody>
+    </table>
