@@ -1,6 +1,18 @@
 @using Northwind.Models
 @model IEnumerable<Discount>
 
+    <div id="toast" class="toast">
+        <div class="toast-header">
+            <strong class="mr-auto" id="product" data-value="Seasoning"></strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Discount Code: <strong id="code" data-value="CODE"></strong>
+        </div>
+    </div>
+
 <div class="jumbotron my-2 border border-secondary">
     <h1 class="display-4">Northwind</h1>
     <p class="lead">We have the best prices and selection of high quality foods &amp; beverages on the planet! Check out our featured discounts below.</p>
@@ -25,5 +37,5 @@
 
 
 @section Scripts {
-    <script type="text/javascript" src="~/js/client.js"></script>
+    <script src="~/js/app.js"></script>
 }
