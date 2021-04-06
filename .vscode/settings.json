@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\netcoreapp3.1\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/050fb8bd-de24-4589-9dc8-61fcf41dcdd5/resourceGroups/northwind/providers/Microsoft.Web/sites/Northwind-MJM"
+}
