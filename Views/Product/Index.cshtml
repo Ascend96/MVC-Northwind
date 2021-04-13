@@ -1,4 +1,5 @@
-@model int
+@using Northwind.Models
+@model IEnumerable<Category>
     
     @* Displays table for product information based on category selected *@
     
@@ -6,12 +7,22 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Product</th>
+            <th scope="col">
+                <select class="form-control form-control-sm" id="CategoryId">
+                @foreach (Category c in Model)
+                {
+                    if (c.CategoryId == ViewBag.id)
+                        { <option value="@c.CategoryId" selected>@c.CategoryName</option> }
+                    else
+                        { <option value="@c.CategoryId">@c.CategoryName</option> }
+                }
+                </select>
+            </th>
                 <th scope="col">Price</th>
                 <th scope="col">Stock</th>
             </tr>
         </thead>
-        <tbody id="product_rows" data-id="@Model"></tbody>
+    <tbody id="product_rows" data-id="@ViewBag.id"></tbody>
     </table>
     @section scripts
 {
