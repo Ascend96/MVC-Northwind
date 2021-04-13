@@ -1,5 +1,4 @@
-@using Northwind.Models
-@model IEnumerable<Product>
+@model int
     
     @* Displays table for product information based on category selected *@
     
@@ -12,15 +11,7 @@
                 <th scope="col">Stock</th>
             </tr>
         </thead>
-        <tbody id="product_rows">
-        @foreach (Product category in Model){
-        <tr>
-            <td>@category.ProductName</td>
-            <td>@category.UnitPrice</td>
-            <td>@category.UnitsInStock</td>
-        </tr>
-        }
-        </tbody>
+        <tbody id="product_rows" data-id="@Model"></tbody>
     </table>
     @section scripts
 {
@@ -28,6 +19,8 @@
     $(function () {
         getProducts()
         function getProducts() {
+            var id = $('#product_rows').data('id');
+            alert(id);
             $.getJSON({
                 url: "../../api/product",
                 success: function (response, textStatus, jqXhr) {
