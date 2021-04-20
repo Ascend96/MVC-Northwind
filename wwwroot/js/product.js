@@ -14,7 +14,7 @@ $(function () {
                         + "<td class=\"text-right\">$" + response[i].unitPrice.toFixed(2) + "</td>"
                         + "<td class=\"text-right\">" + response[i].unitsInStock + "</td>"
                         + "</tr>";
-                        console.log(row);
+                        
                     $('#product_rows').append(row);
                 }
             },
@@ -30,5 +30,9 @@ $(function () {
     });
     $('#Discontinued').on('change', function(){
         getProducts();
+    });
+    // delegated event listener
+    $('#product_rows').on('click', 'tr', function(){
+        console.log($(this).data('id'));
     });
 });
