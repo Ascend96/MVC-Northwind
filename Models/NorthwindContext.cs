@@ -10,12 +10,13 @@ namespace Northwind.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<CartItem> CartItems {get; set; } 
 
         public void AddCustomer(Customer customer){
             this.Add(customer);
             this.SaveChanges();
         }
-                public void EditCustomer(Customer customer)
+        public void EditCustomer(Customer customer)
         {
             var customerToUpdate = Customers.FirstOrDefault(c => c.CustomerId == customer.CustomerId);
             customerToUpdate.Address = customer.Address;
