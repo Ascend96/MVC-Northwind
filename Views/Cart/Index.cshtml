@@ -1,0 +1,11 @@
+@using Northwind.Models
+@model IEnumerable<CartItem>
+<div>this is the cart view</div>
+<div>
+    <ul>
+    @foreach (CartItem item in Model)
+    {
+        <li>@item.ProductId</li>
+    }
+    </ul>
+</div>

@@ -53,7 +53,12 @@
                                 }
                             </div>
                         </li>
+                        
+                        <li class="nav-item ml-auto"><a class="nav-link" asp-controller="Cart" asp-action="Index">Cart</a></li>
                     </ul>
+                </div>
+                <div>
+                    
                 </div>
                 @if (User?.Identity?.IsAuthenticated ?? false)
                 {

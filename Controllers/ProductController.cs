@@ -17,5 +17,7 @@ namespace Northwind.Controllers
         }
         public IActionResult Discount() => View(_northwindContext.Discounts.Where(d => d.StartTime <= DateTime.Now && d.EndTime > DateTime.Now));
 
+    
+
     }
 }
