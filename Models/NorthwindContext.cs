@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Northwind.Models;
 
 namespace Northwind.Models
 {
@@ -55,6 +57,16 @@ namespace Northwind.Models
             SaveChanges();
             cartItem.Product = Products.Find(cartItem.ProductId);
             return cartItem;
+        }
+        // public void UpdateQty(CartItem cartItem){
+        //     cartItem.Quantity++;
+        //     SaveChanges();
+        // }
+
+        public void RemoveFromCart(int id){
+            var itemToRemove = CartItems.FirstOrDefault(c => c.CartItemId == id);
+            CartItems.Remove(itemToRemove);
+            SaveChanges();
         }
     }
 }

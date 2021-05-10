@@ -4,6 +4,6 @@ namespace Northwind.Models
 {
     public class AppUser : IdentityUser
     {
-
+        
     }
 }

@@ -1,11 +1,42 @@
 @using Northwind.Models
 @model IEnumerable<CartItem>
 <div>this is the cart view</div>
+<div id="user" style="display:none;" data-email="@User.Identity.Name" data-customer="@User.IsInRole("customer")"></div>
 <div>
-    <ul>
-    @foreach (CartItem item in Model)
-    {
-        <li>@item.ProductId</li>
-    }
-    </ul>
+    <table class="table table-bordered cartTable">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="cartItemRows">
+            
+            @foreach (CartItem item in Model)
+        {
+            <tr data-cost="@item.Product.UnitPrice" data-quantity="@item.Quantity">
+                <td>@item.Product.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Product.UnitPrice.ToString("0.00")</td>
+                <td><button class="btn btn-primary btn-sm delete" data-id="@item.CartItemId">Remove from cart</button></td>
+                
+            </tr>
+        }
+        
+            
+        </tbody>
+
+    </table>
+    <div id="totalCost" class="text-right">Cart Total: </div>
+    <div class="text-right"><button id="checkOutCart" class="btn btn-success">Check Out</button></div>
+    
+
 </div>
+    @section scripts
+{
+    <script src="~/js/cart.js"></script>
+
+
+}
