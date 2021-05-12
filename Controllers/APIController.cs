@@ -31,8 +31,16 @@ namespace Northwind.Controllers
         // adds a row to the cartitem table
         public CartItem Post([FromBody] CartItemJSON cartItem) => _northwindContext.AddToCart(cartItem);
         [HttpDelete, Route("api/removefromcart/{id}")]
+        // deletes specific item in cart
         public void Delete(int id) => _northwindContext.RemoveFromCart(id);
         [HttpGet, Route("api/cartitem/{email}")]
+        // gets cart items based on logged in user
         public IEnumerable<CartItemJSON> GetCartItem(string email) =>_northwindContext.CartItems.Where(c => c.Customer.Email == email).Select(c => new CartItemJSON{id = c.CartItemId, email = c.Customer.Email, qty = c.Quantity });
+        
+        [HttpPut, Route("api/checkout/{email}")]
+        // updates stock based on items in cart upon checkout
+        public void UpdateCart(string email) => _northwindContext.UpdateDatabase(email);
+        
+        
     }
 }

@@ -58,15 +58,27 @@ namespace Northwind.Models
             cartItem.Product = Products.Find(cartItem.ProductId);
             return cartItem;
         }
-        // public void UpdateQty(CartItem cartItem){
-        //     cartItem.Quantity++;
-        //     SaveChanges();
-        // }
-
+        
         public void RemoveFromCart(int id){
             var itemToRemove = CartItems.FirstOrDefault(c => c.CartItemId == id);
             CartItems.Remove(itemToRemove);
             SaveChanges();
+        }
+
+
+        // updates stock based on items in cart upon checkout with api controller
+            public void UpdateDatabase(string email){
+             var query = CartItems.Where(c => c.Customer.Email == email).ToList();
+             foreach(CartItem cartitem in query){
+                CartItem cartItem = CartItems.FirstOrDefault(ci => ci.Customer.Email == email && ci.ProductId == cartitem.ProductId);
+                Product product = Products.FirstOrDefault(p => p.ProductId == cartitem.ProductId);
+                int updatedQuantity = (product.UnitsInStock - cartitem.Quantity);
+                product.UnitsInStock = (short)updatedQuantity;
+                CartItems.Remove(cartitem);
+             }
+            
+            SaveChanges();
+            
         }
     }
 }

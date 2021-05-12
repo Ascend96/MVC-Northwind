@@ -1,8 +1,7 @@
 @using Northwind.Models
 @model IEnumerable<CartItem>
-<div>this is the cart view</div>
 <div id="user" style="display:none;" data-email="@User.Identity.Name" data-customer="@User.IsInRole("customer")"></div>
-<div>
+<div class="cartMain">
     <table class="table table-bordered cartTable">
         <thead>
             <tr>
@@ -13,7 +12,7 @@
             </tr>
         </thead>
         <tbody id="cartItemRows">
-            
+            @* loops through items in cartitem model *@
             @foreach (CartItem item in Model)
         {
             <tr data-cost="@item.Product.UnitPrice" data-quantity="@item.Quantity">

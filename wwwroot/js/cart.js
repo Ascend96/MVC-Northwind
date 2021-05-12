@@ -32,13 +32,17 @@ $(function () {
         console.log(total);
         $("#totalCost").append('$' + parseFloat(total).toFixed(2));
     }
-
-     //Create checkout feature 
-     $("#checkOutCart").on('click', function(){
-         console.log("Working");
-         // needs to be able to update database based on quantity and items in cart
-
-
+    $("#checkOutCart").on('click', function(){
+        console.log("working");
+        var email = $("#user").data('email');
+        $.ajax({
+            url: "../../api/checkout/" + email,
+            type: 'put',
+            success: function (response, textStatus, jqXhr) {
+                console.log('Success' + response);
+                $(".cartMain").html('<div class="jumbotron text-center"><h2>Successfully Checked out</h2></div>');
+                
+            },
+        })
     })
-
 });
